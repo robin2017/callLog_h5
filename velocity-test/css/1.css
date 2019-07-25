@@ -1,0 +1,27 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 320px;
+    height: 430px;
+    border: 1px solid #ddd;
+    background: #fff;
+    margin:30px auto;
+}
+.box{
+    position:relative;
+}
+
+.buddy{
+    position: absolute;
+    width:96px;
+    height:96px;
+    left:50%;
+    top:213px;
+    border-radius: 50%;
+    margin-left:-48px;
+    margin-top:-48px;
+}
