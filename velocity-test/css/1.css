@@ -25,3 +25,15 @@
     margin-left:-48px;
     margin-top:-48px;
 }
+.inner{
+    margin-top:66px;
+    text-align:center;
+}
+.inner span{
+    font-size:14px;
+}
+
+.btn{
+    width:90%;
+    height:45px;
+}

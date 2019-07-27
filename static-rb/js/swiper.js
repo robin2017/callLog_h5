@@ -1,4 +1,4 @@
-var swiper = new Swiper('.swiper-container', {
+var mySwiper = new Swiper('.swiper-container', {
     direction: 'vertical',
     pagination: {
         el: '.swiper-pagination',
