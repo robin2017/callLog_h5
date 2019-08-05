@@ -8,19 +8,32 @@ myUtils.getMockData('callLog').then((data) => {
     let callOutDuration = 0;
     let callPersonMap = {};//也可以用map
 
+    let mobileTime = 0, unionTime = 0, telcomTime = 0;
+
     mockData.forEach(item => {
+        let type = myUtils.getYYS(item.number)
+        if (type === 1) {
+            mobileTime += item.duration;
+        } else if (type === 2) {
+            unionTime += item.duration;
+        } else if (type === 3) {
+            telcomTime += item.duration;
+        } else {
+            console.log('未知运营商号码：' + item.number)
+        }
+        item.dateStr = new Date(item.date);
         callDuration += item.duration;
         let it = callPersonMap[item.number] ?
             callPersonMap[item.number] : {totalDuration: 0, totalTimes: 0}
         it.totalDuration += item.duration;
-        it.callIn=it.callIn||0;
-        it.callOut = it.callOut||0;
+        it.callIn = it.callIn || 0;
+        it.callOut = it.callOut || 0;
         if (item.type === 1) {
             callInDuration += item.duration;
-            it.callIn+=item.duration;
+            it.callIn += item.duration;
         } else {
             callOutDuration += item.duration;
-            it.callOut+=item.duration;
+            it.callOut += item.duration;
         }
         it.totalDurationTransform = myUtils.transformSecond(it.totalDuration);
         it.totalTimes++;
@@ -40,9 +53,12 @@ myUtils.getMockData('callLog').then((data) => {
     console.log('排序后:', array);
     //将数据挂载到全局变量上，给后面使用
     window.globalObject = {
-        sortData:array,
+        sortData: array,
         callInDuration,
-        callOutDuration
+        callOutDuration,
+        mobileTime,
+        unionTime,
+        telcomTime
     };
 
     function compare(property) {
@@ -61,9 +77,45 @@ myUtils.getMockData('callLog').then((data) => {
     rb$('#callOutDuration').innerText = myUtils.transformSecond(callOutDuration);
 
     //计算每天，每时的数据
-    var eachDays = [],eachHours = [];
+    var eachDays = {}, eachHours = {}, eachDayHours = {};
+    mockData.forEach(item => {
+        //将日期转化
+        let date = new Date(item.date);
 
+        let d = (date.getMonth() + 1) + '-' + date.getDate();
+        let h = date.getHours();
+        if (eachDays[d] === undefined) {
+            eachDays[d] = 0;
+        }
+        if (eachHours[h] === undefined) {
+            eachHours[h] = 0;
+        }
+        if (eachDayHours[d + '*' + h] === undefined) {
+            eachDayHours[d + '*' + h] = 0;
+        }
 
+        if (date.getHours() > 1 && date.getHours() < 5) {
+            console.log('深夜：', item)
+        }
+        eachDays[d] += item.duration;
+        eachHours[h] += item.duration;
+        eachDayHours[d + '*' + h] += item.duration
+    })
+    console.log('eachdays:', eachDays)
+    console.log('eachHours:', eachHours);
+    console.log('eachDayHours:', eachDayHours);
+    window.globalObject.eachDays = eachDays;
+    window.globalObject.eachHours = eachHours;
+    window.globalObject.eachDayHours = eachDayHours;
 
+    const baseUrl = "http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=";
+    //归属地查询  用代理，暂时不会
+    // Object.keys(callPersonMap).forEach(number=>{
+    //     console.log("查询归属地："+number);
+    //     $.get(baseUrl+number,function (data) {
+    //         console.log(data)
+    //     })
+    //
+    // })
 })
 

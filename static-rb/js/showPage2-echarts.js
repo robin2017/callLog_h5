@@ -6,7 +6,8 @@ function handle() {
 
 // 2、上图显示
 // 基于准备好的dom，初始化echarts实例
-    var callInColor='#ffdb5c',callOutColor='#67e0e3';
+  //  var callInColor='#ffdb5c',callOutColor='#67e0e3';
+    var callInColor='#FF7304',callOutColor='#B70DFF';
     var myChart = echarts.init(document.getElementById('main'));
     var yAxisData = [], callInData = [], callOutData = [], callInSum = 0, callOutSum = 0;
     for (let i = 0; i < showNumber; i++) {

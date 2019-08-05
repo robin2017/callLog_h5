@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>设置页</title>
+</head>
+<body>
+<div class="settings">
+    hello，设置页
+    <div>
+        开始时间: <input type="text" id="starttime"/>
+    </div>
+    <div>
+        结束时间: <input type="text" id="endtime"/>
+    </div>
+    <div>
+        统计人数:<input type="text" id="number"/>
+    </div>
+    <button class="back" id="confirm">确定</button>
+    <button class="back" id="cancel">取消</button>
+</div>
+</body>
+<style>
+    .settings {
+
+    }
+
+    .settings .back {
+
+    }
+</style>
+<script src="static-rb/js/myUtils.js"></script>
+<script>
+    document.querySelector('#confirm').addEventListener('click', function () {
+        console.log('确定');
+
+
+        var today = new Date(), monthBefore = new Date(today.getTime() - 1000 * 3600 * 24 * 30)
+
+        console.log(today, monthBefore)
+        var starttime = document.querySelector('#starttime').value || myUtils.getDate(monthBefore);
+        var endtime = document.querySelector('#endtime').value || myUtils.getDate(today);
+        var number = document.querySelector('#number').value || 5;
+        var duration = myUtils.datedifference(endtime, starttime)
+        console.log(starttime, endtime, number, duration);
+        let ret = {starttime, endtime, number, duration};
+        window.localStorage.setItem('settings', JSON.stringify(ret));
+
+        window.history.back()
+    })
+    document.querySelector('#cancel').addEventListener('click', function () {
+        window.history.back()
+    })
+</script>
+</html>
