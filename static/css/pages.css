@@ -10,7 +10,7 @@ h1, h2, h3, h4 {
 }
 
 .page0 {
-    background-image: url("../../static/images/bill-bg1.png");
+    background-image: url("../images/bill-bg1.png");
     background-size: cover;
     display: block;
 }
@@ -64,7 +64,7 @@ h1, h2, h3, h4 {
 
 }
 .page1 {
-    background-image: url("../../static/images/bill-bg1.png");
+    background-image: url("../images/bill-bg1.png");
     background-size: cover;
     display: block;
 }
@@ -94,23 +94,23 @@ h1, h2, h3, h4 {
     color: #ffcc96
 }
 .page2 {
-    background-image: url("../../static/images/bill-bg1.png");
+    background-image: url("../images/bill-bg1.png");
     background-size: cover;
     display: block;
 }
 
 .page3 {
-    background-image: url("../../static/images/bill-bg1.png");
+    background-image: url("../images/bill-bg1.png");
     background-size: cover;
     display: block;
 }
 .page4 {
-    background-image: url("../../static/images/bill-bg1.png");
+    background-image: url("../images/bill-bg1.png");
     background-size: cover;
     display: block;
 }
 .page5 {
-    background-image: url("../../static/images/bill-bg1.png");
+    background-image: url("../images/bill-bg1.png");
     background-size: cover;
     display: block;
 }
