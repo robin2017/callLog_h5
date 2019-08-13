@@ -1,27 +1,11 @@
-console.log('hahahha3')
-define(function () {
-    var add = function (x,y){
-        return x+y;
-    };
-    return {
-        add: add
-    };
+define('dao/index', ['dao/mock', 'dao/real', 'utils/index'],
+    function (mock, real, utils) {
+        function getData() {
+            return !utils.deviceDetect() ? mock.getMockData()
+                : real.getRealData();
+        }
 
-
-    // function getData(isMock) {
-    //     return new Promise((resolve, reject) => {
-    //         console.log('hahahha4')
-    //         if (!isMock) {
-    //             require(['./api'],function (api) {
-    //                 api.getCallLog.then(data=>{
-    //                     console.log('====>12345:',data)
-    //                    resolve(data)
-    //                 })
-    //             })
-    //         }
-    //     })
-    // }
-    // return {
-    //     getData
-    // }
-});
+        return {
+            getData
+        }
+    });
