@@ -1,12 +1,14 @@
 require.config({
-    baseUrl: 'static/js',
+    baseUrl: './static/js',
     paths: {
-        swiper: 'lib/swiper/swiper'
+        swiper: './lib/swiper/swiper.min',
+        jquery: './lib/jquery/jquery-3.1.1'
     }
 });
-console.log('ddd')
-define(['swiper'], function (Swiper) {
-    console.log('hahahah')
+//require内部不能再进行define
+//require(name,callback) <===> define(name,factory)
+
+require(['swiper'], function (Swiper) {
     new Swiper('.swiper-container', {
         direction: 'vertical',
         pagination: {
@@ -14,4 +16,10 @@ define(['swiper'], function (Swiper) {
             clickable: true,
         },
     });
-})
+});
+
+define(['dao/index'], function (a) {
+    a.getData().then(data => {
+        console.log(data)
+    })
+});
