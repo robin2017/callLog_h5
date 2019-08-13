@@ -1,7 +1,8 @@
+const isMock = true;
 define('dao/index', ['dao/mock'],
     function (mock) {
         function getData() {
-            return mock.getMockData();
+            return isMock ? mock.getMockData() : null;
         }
 
         return {

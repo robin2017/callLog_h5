@@ -16,10 +16,10 @@ require(['swiper'], function (Swiper) {
             clickable: true,
         },
     });
+    require(['dao/index'], function (a) {
+        a.getData().then(data => {
+            console.log(data)
+        })
+    });
 });
 
-define(['dao/index'], function (a) {
-    a.getData().then(data => {
-        console.log(data)
-    })
-});

@@ -1,7 +1,7 @@
 define('dao/mock', ['jquery'],
     function ($) {
         function getMockData() {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 $.get('static/mock/callLog.json', function (callLog) {
                     $.get('static/mock/contacts.json', function (contacts) {
                         resolve({callLog, contacts})
@@ -13,4 +13,4 @@ define('dao/mock', ['jquery'],
         return {
             getMockData
         }
-    })
+    });
