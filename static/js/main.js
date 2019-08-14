@@ -5,7 +5,8 @@ require.config({
         jquery: './lib/jquery/jquery-3.1.1',
         velocity:'./lib/velocity/velocity',
         //velocity.ui源码中不能乱改，搞得自己浪费半个小时！！！
-        velocityui:'./lib/velocity/velocity.ui'
+        velocityui:'./lib/velocity/velocity.ui',
+        echarts:'./lib/echarts/echarts.latest'
     },
     shim:{
         velocity:{

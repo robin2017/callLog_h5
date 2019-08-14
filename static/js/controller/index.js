@@ -9,6 +9,9 @@ define('controller/index', ['swiper'], function (Swiper) {
     });
     require(['controller/page0']);
     require(['controller/page1']);
+    require(['controller/page2']);
+    require(['controller/page3']);
+    require(['controller/page4']);
     return {
         swiper
     }

@@ -12,7 +12,7 @@ define('service/index', ['dao/index', 'utils/index'],
         function getDaoData() {
             return daoData ? Promise.resolve(daoData) :
                 dao.getData().then(data => {
-                    console.log('从dao层加载一次数据:',daoData);
+                    console.log('从dao层加载一次数据:', daoData);
                     daoData = data;
                     return daoData;
                 })
@@ -69,9 +69,9 @@ define('service/index', ['dao/index', 'utils/index'],
                 let array = Object.values(callPersonMap)
                 array.sort(compare('totalDuration'))
 
-                Object.assign(serviceData,{callDuration,callInDuration,callOutDuration,callPersonMap})
-                Object.assign(serviceData,{mobileTime,unionTime,telcomTime})
-                serviceData.sortData=array;
+                Object.assign(serviceData, {callTimes, callDuration, callInDuration, callOutDuration, callPersonMap})
+                Object.assign(serviceData, {mobileTime, unionTime, telcomTime})
+                serviceData.sortData = array;
 
 
                 //计算每天每时的数据
@@ -100,10 +100,10 @@ define('service/index', ['dao/index', 'utils/index'],
                     eachHours[h] += item.duration;
                     eachDayHours[d + '*' + h] += item.duration
                 });
-                Object.assign(serviceData,{eachDays,eachHours,eachDayHours});
+                Object.assign(serviceData, {eachDays, eachHours, eachDayHours});
 
                 serviceData.done = true;
-                console.log('在service层处理一次数据:',serviceData);
+                console.log('在service层处理一次数据:', serviceData);
                 return serviceData;
             })
         }
@@ -125,7 +125,7 @@ define('service/index', ['dao/index', 'utils/index'],
         }
 
         function getServiceData() {
-            return serviceData.done?Promise.resolve(serviceData):
+            return serviceData.done ? Promise.resolve(serviceData) :
                 handleData()
         }
 
