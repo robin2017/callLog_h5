@@ -11,8 +11,8 @@ define('utils/index', [],
         }
 
         //得到年月日
-        function getDate(date){
-            return `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+        function getDate(date) {
+            return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
         }
 
         function transformSecond(sec) {
@@ -30,7 +30,7 @@ define('utils/index', [],
             return ret;
         }
 
-         function hideName(name) {
+        function hideName(name) {
             if (name === undefined) {
                 return "路人甲"
             }
@@ -44,7 +44,7 @@ define('utils/index', [],
         }
 
         var isChinaMobile = /^134[0-8]\d{7}$|^(?:13[5-9]|147|15[0-27-9]|178|18[2-478])\d{8}$/;
-        var isChinaUnion  = /^(?:13[0-2]|145|15[56]|176|18[56])\d{8}$/;
+        var isChinaUnion = /^(?:13[0-2]|145|15[56]|176|18[56])\d{8}$/;
         var isChinaTelcom = /^(?:133|153|177|18[019])\d{8}$/; //1349号段
         function getYYS(number) {
             if (isChinaMobile.test(number)) {
@@ -58,11 +58,22 @@ define('utils/index', [],
             }
         }
 
+
+        function getStaticData(path) {
+            return new Promise((resolve) => {
+                $.get(path, function (data) {
+                        resolve(data)
+                    }
+                )
+            })
+        }
+
         return {
             deviceDetect,
             getDate,
             getYYS,
             hideName,
-            transformSecond
+            transformSecond,
+            getStaticData
         }
     });

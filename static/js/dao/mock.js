@@ -1,13 +1,13 @@
-define('dao/mock', ['jquery'],
-    function ($) {
+define('dao/mock', ['jquery', 'utils/index'],
+    function ($, utils) {
         function getMockData() {
             console.log('come into getMockData');
-            return new Promise((resolve) => {
-                $.get('static/mock/callLog.json', function (callLog) {
-                    $.get('static/mock/contacts.json', function (contacts) {
-                        resolve({callLog, contacts})
-                    })
-                })
+            return Promise.all([utils.getStaticData('static/mock/callLog.json'),
+                utils.getStaticData('static/mock/contacts.json')]).then(data => {
+                return {
+                    callLog: data[0],
+                    contacts: data[1]
+                };
             })
         }
 

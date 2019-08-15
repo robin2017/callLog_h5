@@ -28,12 +28,11 @@ define('dao/real', [],
 
         function getRealData() {
             console.log('come into getRealData');
-            return new Promise((resolve) => {
-                getCallLog().then(callLog => {
-                    getContacts().then(cantacts => {
-                        resolve({callLog, cantacts})
-                    })
-                })
+            return Promise.all([getCallLog(), getContacts()]).then(data => {
+                return {
+                    callLog: data[0],
+                    contacts: data[1]
+                }
             })
         }
 
