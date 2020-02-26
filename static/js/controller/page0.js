@@ -12,6 +12,6 @@ define('controller/page0', ['jquery', 'controller/index', 'utils/index'],
         });
         var today = new Date();
         var monthBefore = new Date(today.getTime() - 1000 * 3600 * 24 * 30);
-        $('#starttime').html(utils.getDate(monthBefore));
-        $('#endtime').html(utils.getDate(today));
+        $('#starttime').html('2019-6-9');
+        $('#endtime').html('2019-7-9');
     });
