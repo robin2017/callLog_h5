@@ -1,6 +1,6 @@
 //页面展示
 define('controller/page1', ['jquery', 'controller/index', 'velocityui', 'utils/index', 'service/index'],
-    function ($, index, ui, myUtils, service) {
+    async function ($, index, ui, myUtils, service) {
         const ele1 = $('.page1 main .title'), ele2 = $('.page1 main .content'),
             ele3 = $('.page1 footer .reminder');
         const seq1 = [
@@ -37,6 +37,7 @@ define('controller/page1', ['jquery', 'controller/index', 'velocityui', 'utils/i
                 ele3.velocity('stop')
             }
         });
+        console.log('before - 815')
         service.getServiceData().then(data => {
             $('#callDuration').html(myUtils.transformSecond(data.callDuration))
             $('#callTimes').html(data.callTimes);
