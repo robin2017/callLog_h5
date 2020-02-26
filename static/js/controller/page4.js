@@ -1,6 +1,7 @@
 //页面展示
 define('controller/page4', ['echarts', 'service/index'],
     function (echarts, service) {
+        console.log('come into page4')
         service.getServiceData().then(serviceData => {
             const {eachDayHours, eachDays, eachHours} = serviceData;
             const hours = Object.keys(eachHours);

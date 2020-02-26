@@ -1,6 +1,7 @@
 //页面展示
 define('controller/page3', ['echarts', 'service/index'],
     function (echarts, service) {
+        console.log('come into page3')
         service.getServiceData().then(data => {
             const {eachDays, eachHours} = data;
             var myColor = '#67e0e3';

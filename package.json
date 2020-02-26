@@ -16,5 +16,8 @@
     "url": "https://github.com/robin2017/callLog_h5/issues"
   },
   "homepage": "https://github.com/robin2017/callLog_h5#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "browser-sync": "^2.26.7"
+  }
 }

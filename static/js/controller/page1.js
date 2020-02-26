@@ -1,6 +1,7 @@
 //页面展示
 define('controller/page1', ['jquery', 'controller/index', 'velocityui', 'utils/index', 'service/index'],
-    async function ($, index, ui, myUtils, service) {
+     function ($, index, ui, myUtils, service) {
+    console.log('come into page1')
         const ele1 = $('.page1 main .title'), ele2 = $('.page1 main .content'),
             ele3 = $('.page1 footer .reminder');
         const seq1 = [

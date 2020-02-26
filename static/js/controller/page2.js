@@ -1,6 +1,7 @@
 //页面展示
 define('controller/page2', ['echarts', 'service/index'],
     function (echarts, service) {
+        console.log('come into page2')
         service.getServiceData().then(data => {
 
             //1、处理数据

@@ -4,6 +4,7 @@ define('dao/mock', ['jquery', 'utils/index'],
             console.log('come into getMockData');
             return Promise.all([utils.getStaticData('static/mock/callLog.json'),
                 utils.getStaticData('static/mock/contacts.json')]).then(data => {
+                    console.log('')
                 return {
                     callLog: data[0],
                     contacts: data[1]
